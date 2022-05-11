@@ -1,0 +1,23 @@
+import vagones.*
+test "Formación: más pesado" {
+	const vagonCarga = new VagonDeCarga()
+	const formacion = new Formacion(vagones=[
+		new VagonDePasajeros(ancho=3, largo=10),
+		vagonCarga,
+		new VagonDormitorio()
+	])
+	
+	assert.equals(formacion.vagonMasPesado() == vagonCarga)	
+}
+
+test "Formación: más liviano" {
+	const vagonDormitorio = new VagonDormitorio()
+	
+	const formacion = new Formacion(vagones=[
+		new VagonDePasajeros(ancho=3, largo=10),
+		new VagonDeCarga(),
+		vagonDormitorio
+	])
+	
+	assert.equals(vagonDormitorio, formacion.vagonMasLiviano())	
+}
